@@ -1,0 +1,6 @@
+Podczas pierwszego spotkania, zdecydowaliśmy się podzielić pracę na kilka części, głównie kierowaliśmy się załóżeniem żeby sprawnie wykonać zadanie i nie wchodzić sobie w drogę przy łączeniu kodu.
+Pierwsza osoba zajmie się obsługą danych – przygotuje bazę haseł podzieloną na kategorie i trzy poziomy trudności oraz napisze funkcje do zapisu i odczytu stanu gry i statystyk z plików tekstowych. 
+Druga osoba zajmie się logiką gry. Jej zadaniem będzie stworzenie mechaniki, która sprawdza wpisywane litery, aktualizuje liczbę pozostałych szans i weryfikuje warunki wygranej lub przegranej. 
+Trzecia osoba będzie odpowiadała za ogólny przebieg działania programu oraz dodatkową funkcjonalność, którą ustaliliśmy, że będzie tryb multiplayer. Do jej zadań będzie należała też obsługa menu głównego i nawigacja między ekranami, w tym wyświetlanie pytania o zapis po skończonej partii. 
+Czwarta osoba skupi się na interfejsie. Będzie odpowiadać za wyświetlanie kolejnych etapów szubienicy (w formie ASCII art), poprawne rysowanie planszy z ukrytym hasłem oraz bezpieczne wczytywanie znaków wpisywanych przez gracza. 
+Doszliśmy do wniosku, że taki podział pracy będzie najlepszy, ponieważ uważamy, że każdy będzie miał podobną ilość pracy i pozwoli to nam bezpiecznie pracować nad wszystkimi elementami projektu jednocześnie.
