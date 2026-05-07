@@ -1,0 +1,53 @@
+{
+  "łatwy": {
+    "Zwierzęta": [
+      "kot", "pies", "ptak", "ryba", "mysz"
+    ],
+    "Jedzenie": [
+      "chleb", "woda", "jajko", "ser", "jabłko"
+    ],
+    "Kolory": [
+      "biały", "czarny", "żółty", "szary", "rudy"
+    ],
+    "Dom": [
+      "okno", "stół", "fotel", "łóżko", "szafa"
+    ],
+    "Ciało": [
+      "ręka", "noga", "oko", "ucho", "nos"
+    ]
+  },
+  "średni": {
+    "Zwierzęta": [
+      "wiewiórka", "krokodyl", "kangur", "pingwin", "pantera"
+    ],
+    "Jedzenie": [
+      "spaghetti", "naleśniki", "kanapka", "czekolada", "truskawka"
+    ],
+    "Zawody": [
+      "policjant", "strażak", "nauczyciel", "architekt", "kucharz"
+    ],
+    "Sport": [
+      "koszykówka", "siatkówka", "pływanie", "kolarstwo", "narciarstwo"
+    ],
+    "Pojazdy": [
+      "samochód", "motocykl", "samolot", "tramwaj", "helikopter"
+    ]
+  },
+  "trudny": {
+    "Zwierzęta": [
+      "jeżozwierz", "dżdżownica", "chrabąszcz", "pancernik", "gżegżółka"
+    ],
+    "Biologia": [
+      "mitochondrium", "chlorofil", "ewolucja", "chromosom", "fotosynteza"
+    ],
+    "Geografia": [
+      "płaskowyż", "archipelag", "przylądek", "starorzecze", "stalaktyt"
+    ],
+    "Przedmioty": [
+      "śrubokręt", "wycieraczka", "lutownica", "dziurkacz", "kalkulator"
+    ],
+    "Łamańce językowe": [
+      "rzezimieszek", "rzeżucha", "zmarszczka", "dżdżysty", "świerszcz"
+    ]
+  }
+}
