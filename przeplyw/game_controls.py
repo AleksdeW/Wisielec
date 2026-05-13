@@ -1,23 +1,23 @@
+from przeplyw.multiplayer import tryb_multiplayer
+
 def uruchom_gre(tryb):
-
-    haslo = ""
-
     if tryb == "single":
         print("\n--- GRA JEDNOOSOBOWA ---")
-        # [KOD MATEUSZA] - funkcję do losowania hasła.
-        haslo = "PROGRAMOWANIE"
-        print("[Wylosowano hasło z bazy!]")
+        wynik = zagraj_pojedyncza_partie()
+        zakonczenie_gry(wynik)
 
     elif tryb == "multi":
-        print("\n--- GRA WIELOOSOBOWA ---")
-        haslo = input("Gracz 1, podaj hasło (Gracz 2 nie patrzy!): ")
-
-    petla_rozgrywki(haslo)
+        tryb_multiplayer(zagraj_pojedyncza_partie)
 
 
-def petla_rozgrywki(haslo):
+def zagraj_pojedyncza_partie():
+
+    # [KOD MATEUSZA] - funkcja losująca hasło z bazy
+    haslo = ""
+    print("Wylosowano hasło z bazy!")
 
     koniec_gry = False
+    czy_wygral = False
 
     while not koniec_gry:
         # [KOD MAGDY] - funkcja rysująca wisielca i ukryte hasło
@@ -29,22 +29,36 @@ def petla_rozgrywki(haslo):
         # [KOD JANA] - funkcja sprawdzająca czy litera jest w haśle
         print(f"[JANEK: Sprawdzam, czy litera '{litera}' jest poprawna...]")
 
-        # [KOD JANA] - czy gra się skończyła
-        # koniec_gry = sprawdz_czy_koniec()
+        # [KOD JANA] - funkcja Janka musi zwracać dwie rzeczy:
 
-    zakonczenie_gry()
+        # --- TYMCZASOWA SYMULACJA DO TESTÓW (Zanim Janek napisze kod) ---
+        decyzja = input("Symulacja: Czy udało się odgadnąć hasło? (t/n): ")
+        if decyzja.lower() == 't':
+            czy_wygral = True
+            koniec_gry = True
+        else:
+            decyzja_porazka = input("Symulacja: Czy skończyły się życia? (t/n): ")
+            if decyzja_porazka.lower() == 't':
+                czy_wygral = False
+                koniec_gry = True
+
+    return czy_wygral
 
 
-def zakonczenie_gry():
+def zakonczenie_gry(wynik):
 
     print("\n=== KONIEC PARTII ===")
 
-    # [KOD MAGDY] - wyświetlenie komunikatu "WYGRAŁEŚ!" lub "PRZEGRAŁEŚ!"
+    # [KOD MAGDY] - komunikat w zależności od wyniku
+    if wynik == True:
+        print("WYGRAŁEŚ!")
+    else:
+        print("PRZEGRAŁEŚ!")
 
     wybor = input("Czy chcesz zapisać swój wynik w statystykach? (t/n): ")
 
     if wybor.lower() == 't':
-        # [KOD MATEUSZA] - funkcja zapisująca statystyki/stan do pliku
+        # [KOD MATEUSZA] - funkcja zapisująca do pliku
         print("[MATEUSZ: Zapisywanie danych do pliku...]")
     else:
         print("Pominięto zapisywanie.")
