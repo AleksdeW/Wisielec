@@ -1,8 +1,8 @@
-from controllers.game_controls.import uruchom_gre
-    # ^ do zmiany nazwa folderu na prawdziwą ścieżke
+from przeplyw.game_controls import uruchom_gre
+
 def uruchom_menu():
     while True:
-        # [KOD MAGDY] np. wyswietl_menu()
+        # [KOD MAGDY] - wyświetlanie
         print("\n=== GRA W WISIELCA ===")
         print("1. Gra Jednoosobowa")
         print("2. Gra Wieloosobowa")
@@ -14,11 +14,11 @@ def uruchom_menu():
 
         if wybor == '1':
             print("\n[Uruchamiam tryb jednoosobowy...]")
-            #funkcja przygotowująca grę
+            uruchom_gre(tryb="single")
 
         elif wybor == '2':
             print("\n[Uruchamiam tryb wieloosobowy...]")
-            # funkcję do trybu multi
+            uruchom_gre(tryb="multi")
 
         elif wybor == '3':
             print("\n--- STATYSTYKI ---")
