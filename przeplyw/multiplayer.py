@@ -1,4 +1,4 @@
-def turniej_multiplayer(funkcja_gry):
+def tryb_multiplayer(funkcja_gry):
     print("\n=== TRYB WIELOOSOBOWY (Turniej do 3 punktów) ===")
     gracz1 = input("Podaj imię Gracza 1: ")
     gracz2 = input("Podaj imię Gracza 2: ")
