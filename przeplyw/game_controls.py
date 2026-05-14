@@ -1,4 +1,5 @@
 from przeplyw.multiplayer import tryb_multiplayer
+from dane.gra import wczytaj_baze_z_pliku, wylosuj_haslo
 
 def uruchom_gre(tryb):
     if tryb == "single":
@@ -11,10 +12,17 @@ def uruchom_gre(tryb):
 
 
 def zagraj_pojedyncza_partie():
-
-    # [KOD MATEUSZA] - funkcja losująca hasło z bazy
-    haslo = ""
-    print("Wylosowano hasło z bazy!")
+    baza = wczytaj_baze_z_pliku()
+    
+    if baza is None:
+        print("[Błąd bazy haseł!")
+    else:
+        poziom = input("Wybierz poziom (np. latwy, sredni, trudny): ")
+        kategoria = input("Wybierz kategorię (np. zwierzeta, panstwa): ")
+        
+        haslo = wylosuj_haslo(baza, poziom, kategoria)
+             
+    print(f"Wylosowano hasło do odgadnięcia!")
 
     koniec_gry = False
     czy_wygral = False
@@ -58,8 +66,21 @@ def zakonczenie_gry(wynik):
     wybor = input("Czy chcesz zapisać swój wynik w statystykach? (t/n): ")
 
     if wybor.lower() == 't':
-        # [KOD MATEUSZA] - funkcja zapisująca do pliku
-        print("[MATEUSZ: Zapisywanie danych do pliku...]")
+        stare_dane = wczytaj_gre()
+        if stare_dane is None:
+            wygrane = 0
+            przegrane = 0
+        else:
+            wygrane = stare_dane.get("ilosc_wygranych", 0)
+            przegrane = stare_dane.get("ilosc_przegranych", 0)
+            
+        if wynik == True:
+            wygrane += 1
+        else:
+            przegrane += 1
+            
+        zapisz_gre(wygrane, przegrane)
+        print("Dane pomyślnie zapisane do pliku!")
     else:
         print("Pominięto zapisywanie.")
 
