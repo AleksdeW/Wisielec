@@ -1,8 +1,10 @@
 from przeplyw.game_controls import uruchom_gre
+from dane.wczytanie_gry import wczytaj_gre
 
 def uruchom_menu():
     while True:
         # [KOD MAGDY] - wyświetlanie
+        #przykład
         print("\n=== GRA W WISIELCA ===")
         print("1. Gra Jednoosobowa")
         print("2. Gra Wieloosobowa")
@@ -22,15 +24,21 @@ def uruchom_menu():
 
         elif wybor == '3':
             print("\n--- STATYSTYKI ---")
-            # [KOD MATEUSZA] - pobranie danych o wygranych
-            # [KOD MAGDY] - wyświetlenie tych danych na ekranie
-            print("(Tu będą statystyki)")
-            input("Naciśnij ENTER, aby wrócić...")
+            statystyki = wczytaj_gre()
+            
+            if statystyki:
+                # [KOD MAGDY] - wyswietlanie tabeli wyników
+                # przykład
+                print(f"Wygrane: {statystyki.get('ilosc_wygranych', 0)}")
+                print(f"Przegrane: {statystyki.get('ilosc_przegranych', 0)}")
+            else:
+                print("Nie znaleziono zapisanych statystyk.")
+                
+            input("\nNaciśnij ENTER, aby wrócić do menu...")
 
         elif wybor == '4':
             print("\nDo zobaczenia!")
             break
 
         else:
-            # [KOD MAGDY] - W przyszłości jej ładny komunikat o błędzie
             print("\nBŁĄD: Nie ma takiej opcji. Wpisz cyfrę od 1 do 4.")
