@@ -1,5 +1,7 @@
 from przeplyw.multiplayer import tryb_multiplayer
 from dane.gra import wczytaj_baze_z_pliku, wylosuj_haslo
+from interfejs.input_handler import pobierz_litere
+from logika_gry.plik import HangmanGame
 
 def uruchom_gre(tryb):
     if tryb == "single":
@@ -21,35 +23,33 @@ def zagraj_pojedyncza_partie():
         kategoria = input("Wybierz kategorię (np. zwierzeta, panstwa): ")
         
         haslo = wylosuj_haslo(baza, poziom, kategoria)
-             
+        
     print(f"Wylosowano hasło do odgadnięcia!")
+    gra = HangmanGame(haslo)
 
     koniec_gry = False
     czy_wygral = False
 
     while not koniec_gry:
-        # [KOD MAGDY] - funkcja rysująca wisielca i ukryte hasło
-        print("\n[MAGDA: Tu rysuje się szubienica i aktualny stan hasła]")
+        # [MIEJSCE NA KOD MAGDY] - funkcja rysująca wisielca
+        print("\n[MAGDA: Tu rysuje się szubienica]")
+        
+        wyświetlanie aktualnego stanu hasła
+        print(f"Hasło: {gra.get_word_state()}")
 
-        # [KOD MAGDY] - funkcja pobierająca literę od gracza
-        litera = input("Podaj literę: ")
+        litera = pobierz_litere(gra.odkryte)
 
-        # [KOD JANA] - funkcja sprawdzająca czy litera jest w haśle
-        print(f"[JANEK: Sprawdzam, czy litera '{litera}' jest poprawna...]")
+        komunikat = gra.guess_litera(litera)
+        print(komunikat)
 
-        # [KOD JANA] - funkcja Janka musi zwracać dwie rzeczy:
-
-        # --- TYMCZASOWA SYMULACJA DO TESTÓW (Zanim Janek napisze kod) ---
-        decyzja = input("Symulacja: Czy udało się odgadnąć hasło? (t/n): ")
-        if decyzja.lower() == 't':
+        if gra.is_won():
             czy_wygral = True
             koniec_gry = True
-        else:
-            decyzja_porazka = input("Symulacja: Czy skończyły się życia? (t/n): ")
-            if decyzja_porazka.lower() == 't':
-                czy_wygral = False
-                koniec_gry = True
+        elif gra.is_lost():
+            czy_wygral = False
+            koniec_gry = True
 
+    print(f"\nSłowo to: {gra.word.upper()}")
     return czy_wygral
 
 
