@@ -2,6 +2,7 @@ from przeplyw.multiplayer import tryb_multiplayer
 from dane.gra import wczytaj_baze_z_pliku, wylosuj_haslo
 from interfejs.input_handler import pobierz_litere
 from logika_gry.plik import HangmanGame
+from dane.wczytanie_gry import wczytaj_gre, zapisz_gre
 
 def uruchom_gre(tryb):
     if tryb == "single":
@@ -17,12 +18,17 @@ def zagraj_pojedyncza_partie():
     baza = wczytaj_baze_z_pliku()
     
     if baza is None:
-        print("[Błąd bazy haseł!")
-    else:
-        poziom = input("Wybierz poziom (np. latwy, sredni, trudny): ")
-        kategoria = input("Wybierz kategorię (np. zwierzeta, panstwa): ")
+        print("[Błąd] Błąd bazy haseł!")
+        return False
         
-        haslo = wylosuj_haslo(baza, poziom, kategoria)
+    poziom = input("Wybierz poziom (np. latwy, sredni, trudny): ")
+    kategoria = input("Wybierz kategorię (np. zwierzeta, panstwa): ")
+    
+    haslo = wylosuj_haslo(baza, poziom, kategoria)
+    
+    if haslo is None:
+        print("Błąd: Nie udało się wylosować hasła z podanych kategorii.")
+        return False
         
     print(f"Wylosowano hasło do odgadnięcia!")
     gra = HangmanGame(haslo)
@@ -31,10 +37,9 @@ def zagraj_pojedyncza_partie():
     czy_wygral = False
 
     while not koniec_gry:
-        # [MIEJSCE NA KOD MAGDY] - funkcja rysująca wisielca
-        print("\n[MAGDA: Tu rysuje się szubienica]")
+        # [KOD MAGDY] - funkcja rysująca wisielca
+        print(f"\n[MAGDA: Tu rysuje się szubienica, pozostało żyć: {gra.lives}]")
         
-        wyświetlanie aktualnego stanu hasła
         print(f"Hasło: {gra.get_word_state()}")
 
         litera = pobierz_litere(gra.odkryte)
@@ -54,7 +59,6 @@ def zagraj_pojedyncza_partie():
 
 
 def zakonczenie_gry(wynik):
-
     print("\n=== KONIEC PARTII ===")
 
     # [KOD MAGDY] - komunikat w zależności od wyniku
