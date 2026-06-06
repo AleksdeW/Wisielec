@@ -3,6 +3,7 @@ from dane.gra import wczytaj_baze_z_pliku, wylosuj_haslo
 from interfejs.input_handler import pobierz_litere
 from logika_gry.plik import HangmanGame
 from dane.wczytanie_gry import wczytaj_gre, zapisz_gre
+from interfejs.szubienica import pokaz_szubienice 
 
 def uruchom_gre(tryb):
     if tryb == "single":
@@ -30,15 +31,16 @@ def zagraj_pojedyncza_partie():
         print("Błąd: Nie udało się wylosować hasła z podanych kategorii.")
         return False
         
-    print(f"Wylosowano hasło do odgadnięcia!")
+    print(f"\nWylosowano hasło do odgadnięcia!")
     gra = HangmanGame(haslo)
 
     koniec_gry = False
     czy_wygral = False
 
     while not koniec_gry:
-        # [KOD MAGDY] - funkcja rysująca wisielca
-        print(f"\n[MAGDA: Tu rysuje się szubienica, pozostało żyć: {gra.lives}]")
+        bledy = gra.max_lives - gra.lives
+        print(f"\nPozostało żyć: {gra.lives}")
+        pokaz_szubienice(bledy)
         
         print(f"Hasło: {gra.get_word_state()}")
 
@@ -54,6 +56,9 @@ def zagraj_pojedyncza_partie():
             czy_wygral = False
             koniec_gry = True
 
+    if not czy_wygral:
+        pokaz_szubienice(gra.max_lives)
+
     print(f"\nSłowo to: {gra.word.upper()}")
     return czy_wygral
 
@@ -61,11 +66,10 @@ def zagraj_pojedyncza_partie():
 def zakonczenie_gry(wynik):
     print("\n=== KONIEC PARTII ===")
 
-    # [KOD MAGDY] - komunikat w zależności od wyniku
     if wynik == True:
-        print("WYGRAŁEŚ!")
+        print("WYGRAŁEŚ! Gratulacje!")
     else:
-        print("PRZEGRAŁEŚ!")
+        print("PRZEGRAŁEŚ! Następnym razem pójdzie lepiej.")
 
     wybor = input("Czy chcesz zapisać swój wynik w statystykach? (t/n): ")
 
