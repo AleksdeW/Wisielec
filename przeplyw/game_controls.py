@@ -22,8 +22,16 @@ def zagraj_pojedyncza_partie():
         print("[Błąd] Błąd bazy haseł!")
         return False
         
-    poziom = input("Wybierz poziom (np. latwy, sredni, trudny): ")
-    kategoria = input("Wybierz kategorię (np. zwierzeta, panstwa): ")
+    poziom = input("Wybierz poziom (łatwy, średni, trudny): ").strip().lower()
+    
+    if poziom not in baza:
+        print(f"Błąd: Nie ma takiego poziomu jak '{poziom}'!")
+        return False
+        
+    dostepne_kategorie = ", ".join(baza[poziom].keys())
+    print(f"\nDostępne kategorie dla poziomu '{poziom}': {dostepne_kategorie}")
+    
+    kategoria = input("Wybierz kategorię: ").strip()
     
     haslo = wylosuj_haslo(baza, poziom, kategoria)
     
