@@ -3,8 +3,6 @@ from dane.wczytanie_gry import wczytaj_gre
 
 def uruchom_menu():
     while True:
-        # [KOD MAGDY] - wyświetlanie
-        #przykład
         print("\n=== GRA W WISIELCA ===")
         print("1. Gra Jednoosobowa")
         print("2. Gra Wieloosobowa")
@@ -27,8 +25,6 @@ def uruchom_menu():
             statystyki = wczytaj_gre()
             
             if statystyki:
-                # [KOD MAGDY] - wyswietlanie tabeli wyników
-                # przykład
                 print(f"Wygrane: {statystyki.get('ilosc_wygranych', 0)}")
                 print(f"Przegrane: {statystyki.get('ilosc_przegranych', 0)}")
             else:
