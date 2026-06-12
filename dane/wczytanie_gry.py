@@ -2,7 +2,7 @@ import json
 import os
 
 
-def wczytaj_gre(nazwa_pliku="zapis_gry.json"):
+def wczytaj_gre(nazwa_pliku="dane/zapis_gry.json"):
     # Sprawdzamy, czy gracz ma w ogóle jakiś zapis gry
     if not os.path.exists(nazwa_pliku):
         print("Nie znaleziono pliku zapisu!")
@@ -15,7 +15,7 @@ def wczytaj_gre(nazwa_pliku="zapis_gry.json"):
 
 
 def zapisz_gre(new_x, new_y):
-    filename = "zapisy_gry.json"
+    filename = "dane/zapisy_gry.json"
 
 
     dane_do_zapisu = {
