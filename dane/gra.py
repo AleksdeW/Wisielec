@@ -1,9 +1,9 @@
 import json
-import random_number
+from dane import random_number
 import os
 
 
-def wczytaj_baze_z_pliku(nazwa_pliku="hasla.json"):
+def wczytaj_baze_z_pliku(nazwa_pliku="dane/hasla.json"):
     """Wczytuje dane z pliku JSON i zwraca je jako słownik Pythona."""
     if not os.path.exists(nazwa_pliku):
         print(f"Błąd: Plik {nazwa_pliku} nie istnieje!")
