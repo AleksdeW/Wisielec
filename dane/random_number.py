@@ -2,7 +2,7 @@ import json
 
 
 def random_number():
-    FILENAME = "seed.json"
+    FILENAME = "dane/seed.json"
     try:
         with open(FILENAME, 'r') as f:
             data = json.load(f)
@@ -20,5 +20,3 @@ def random_number():
     return new_x
 
 
-wynik = random_number()
-print(f"Moja losowa liczba: {wynik}")
