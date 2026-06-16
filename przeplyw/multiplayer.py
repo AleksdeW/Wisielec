@@ -45,10 +45,5 @@ def tryb_multiplayer(funkcja_gry):
     else:
         print(f"\nZwycięzcą zostaje: {gracz2}!")
 
-    wybor = input("\nCzy chcesz zapisać wynik turnieju? (t/n): ")
-    if wybor.lower() == 't':
-        # [KOD MATEUSZA] - zapis statystyk
-        print("[MATEUSZ: Zapisywanie wyniku multi do pliku...]")
-
     print("Naciśnij ENTER, aby wrócić do Menu Głównego...")
     input()
